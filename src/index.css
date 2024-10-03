@@ -4,16 +4,20 @@
   font-weight: 400;
 
   background-color: var(--bgColor);
+  color: var(--textColor);
   --textColor: #e9f9f9;
   --bgColor: #030d0d;
-  --boxColor: #0b1515;
+  --divColor: #0b1515;
   --primary: #94e4dd;
   --secondary: #215784;
   --accent: #467dd0;
 }
+body {
+  margin: 0;
+}
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
