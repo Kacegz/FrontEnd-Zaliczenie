@@ -23,6 +23,8 @@
 }
 .finished {
   background-color: #0b151560;
+}
+.finished > span {
   color: gray;
   text-decoration: line-through;
 }
