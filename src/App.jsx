@@ -34,6 +34,10 @@ function App() {
     });
     setTasks(newTasks);
   }
+  function deleteTask(id) {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    setTasks(newTasks);
+  }
 
   return (
     <>
@@ -60,6 +64,7 @@ function App() {
                 type="button"
                 value="delete"
                 className={styles.delete_button}
+                onClick={() => deleteTask(task.id)}
               />
             </div>
           </div>
