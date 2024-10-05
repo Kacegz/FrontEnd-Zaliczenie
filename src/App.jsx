@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import styles from "./App.module.css";
+import Modal from "./Modal/Modal";
 
 function App() {
   const defaultTasks = [
@@ -78,44 +79,14 @@ function App() {
           Add new task
         </button>
       </div>
-      <dialog ref={dialog} className={styles.modal}>
-        <div className={styles.modal_inputs}>
-          <label htmlFor="name">
-            <h3>Enter the name for a new task</h3>
-          </label>
-          <input
-            type="text"
-            name="name"
-            id=""
-            className={styles.modal_input_text}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label htmlFor="completed">Completed?</label>
-          <input
-            type="checkbox"
-            name="completed"
-            id=""
-            className={styles.modal_checkbox}
-            defaultChecked={completed}
-            onChange={(e) => setCompleted(e.target.checked)}
-          />
-          <div className={styles.modal_buttons}>
-            <button
-              className={styles.modal_button}
-              onClick={() => addNewTask()}
-            >
-              Add
-            </button>
-            <button
-              className={`${styles.modal_button} ${styles.modal_cancel}`}
-              onClick={() => dialog.current.close()}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      </dialog>
+      <Modal
+        dialog={dialog}
+        setName={setName}
+        name={name}
+        setCompleted={setCompleted}
+        completed={completed}
+        addNewTask={addNewTask}
+      />
     </>
   );
 }
