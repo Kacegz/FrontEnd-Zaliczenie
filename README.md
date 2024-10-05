@@ -1,9 +1,15 @@
 # FrontEnd Zaliczenie
 
-`git clone https://github.com/Kacegz/frontend-zaliczenie`
+Aplikacja typu Todo list przygotowana pod testowanie
 
-` cd frontend-zaliczenie`
+## 🛠️ Instalacja:
 
-`npm install`
+1. `git clone https://github.com/Kacegz/frontend-zaliczenie`
 
-`npm run dev`
+2. `cd frontend-zaliczenie`
+
+3. `npm install`
+
+4. `npm run dev`
+
+## 🧪 Testowanie:
