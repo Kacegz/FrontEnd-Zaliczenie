@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./App.module.css";
 import Modal from "./Modal/Modal";
 
-function App() {
+export default function App() {
   const defaultTasks = [
     { id: 1, name: "Buy groceries", completed: false },
     { id: 2, name: "Walk the dog", completed: false },
@@ -90,5 +90,3 @@ function App() {
     </>
   );
 }
-
-export default App;
