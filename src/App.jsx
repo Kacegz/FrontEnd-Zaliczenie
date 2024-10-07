@@ -12,18 +12,20 @@ export default function App() {
   const dialog = useRef();
   const [name, setName] = useState("");
   const [completed, setCompleted] = useState(false);
+  const [id, setId] = useState(4);
 
   function addNewTask() {
     if (!name) {
       return;
     }
     const newTask = {
-      id: tasks.length + 1,
+      id: id,
       name: name,
       completed: completed,
     };
     setTasks([...tasks, newTask]);
     setName("");
+    setId(id + 1);
     dialog.current.close();
   }
   function changeTaskStatus(id) {
