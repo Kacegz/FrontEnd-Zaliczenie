@@ -39,19 +39,18 @@ export default function App() {
     const newTasks = tasks.filter((task) => task.id !== id);
     setTasks(newTasks);
   }
-
   return (
     <>
       <div className={styles.header}>
         <h2>ToDo App</h2>
       </div>
-      <div className={styles.main}>
+      <div className={styles.main} data-testid="main">
         {tasks.map((task) => (
           <div
             key={task.id}
             className={`${styles.task} ${
               task.completed ? styles.finished : ""
-            }`}
+            } task`}
           >
             <span>{task.name}</span>
             <div className={styles.task_buttons}>
@@ -76,7 +75,7 @@ export default function App() {
           className={styles.new_task_button}
           onClick={() => dialog.current.showModal()}
         >
-          Add new task
+          Add task
         </button>
       </div>
       <Modal

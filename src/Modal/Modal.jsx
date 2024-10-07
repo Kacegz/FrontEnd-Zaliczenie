@@ -18,7 +18,7 @@ export default function Modal({
   addNewTask,
 }) {
   return (
-    <dialog ref={dialog} className={styles.modal}>
+    <dialog ref={dialog} className={styles.modal} data-testid="modal">
       <div className={styles.modal_inputs}>
         <label htmlFor="name">
           <h3>Enter the name for a new task</h3>
@@ -26,7 +26,7 @@ export default function Modal({
         <input
           type="text"
           name="name"
-          id=""
+          id="name"
           className={styles.modal_input_text}
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -41,7 +41,12 @@ export default function Modal({
           onChange={(e) => setCompleted(e.target.checked)}
         />
         <div className={styles.modal_buttons}>
-          <button className={styles.modal_button} onClick={() => addNewTask()}>
+          <button
+            className={styles.modal_button}
+            onClick={() => {
+              addNewTask();
+            }}
+          >
             Add
           </button>
           <button
