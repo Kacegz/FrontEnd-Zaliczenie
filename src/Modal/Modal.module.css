@@ -1,19 +1,25 @@
 .modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding: 5rem;
-  background-color: var(--divColor);
-  color: var(--textColor);
-  border-color: var(--secondary);
-}
-.modal::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .modal_inputs {
+  background-color: var(--divColor);
   display: flex;
   gap: 20px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 20vw;
+  padding: 5rem;
+  border: 1px solid var(--secondary);
 }
 .modal_buttons {
   display: flex;

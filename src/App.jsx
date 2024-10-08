@@ -10,23 +10,30 @@ export default function App() {
     { id: 3, name: "Do laundry", completed: true },
   ];
   const [tasks, setTasks] = useState(defaultTasks);
-  const dialog = useRef();
+  const [dialog, setDialog] = useState(false);
   const [name, setName] = useState("");
   const [completed, setCompleted] = useState(false);
   const id = useRef(4);
 
   function handleAddNewTask() {
-    const newTask = addNewTask(id.current, name, completed);
-    setTasks([...tasks, newTask]);
-    setName("");
-    id.current = id.current + 1;
-    dialog.current.close();
+    try {
+      const newTask = addNewTask(id.current, name, completed);
+      setTasks([...tasks, newTask]);
+      setName("");
+      id.current = id.current + 1;
+      toggleDialog();
+    } catch (e) {
+      console.error(e.message);
+    }
   }
   function handleChangeStatus(id) {
     setTasks(changeTaskStatus(tasks, id));
   }
   function handleDeleteTask(id) {
     setTasks(deleteTask(tasks, id));
+  }
+  function toggleDialog() {
+    setDialog(!dialog);
   }
   return (
     <>
@@ -62,13 +69,14 @@ export default function App() {
       <div className={styles.footer}>
         <button
           className={styles.new_task_button}
-          onClick={() => dialog.current.showModal()}
+          onClick={() => toggleDialog()}
         >
           Add task
         </button>
       </div>
       <Modal
         dialog={dialog}
+        toggleDialog={toggleDialog}
         setName={setName}
         name={name}
         setCompleted={setCompleted}
