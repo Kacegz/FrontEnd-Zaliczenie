@@ -27,20 +27,41 @@ describe("App", () => {
   });
 });
 describe("Modal", () => {
-  xit("Adds task", async () => {
+  it("Not visible by default", async () => {
+    render(<App />);
+    const dialog = document.querySelector("#dialog");
+    expect(dialog).not.toBeInTheDocument();
+  });
+  it("Opens modal", async () => {
     render(<App />);
     const openModalButton = screen.getByText("Add task");
     fireEvent.click(openModalButton);
-    const modal = screen.getByTestId("modal");
-    expect(modal).toBeInTheDocument();
-
+    const dialog = document.querySelector("#dialog");
+    expect(dialog).toBeInTheDocument();
+  });
+  it("Closes modal", async () => {
+    render(<App />);
+    const openModalButton = screen.getByText("Add task");
+    fireEvent.click(openModalButton);
+    const dialog = document.querySelector("#dialog");
+    expect(dialog).toBeInTheDocument();
+    const cancelButton = screen.getByText("Cancel");
+    fireEvent.click(cancelButton);
+    expect(dialog).not.toBeInTheDocument();
+  });
+  it("Adds task", async () => {
+    render(<App />);
+    const openModalButton = screen.getByText("Add task");
+    fireEvent.click(openModalButton);
+    const dialog = document.querySelector("#dialog");
+    expect(dialog).toBeInTheDocument();
     const inputNode1 = screen.getByLabelText("Enter the name for a new task");
-
     fireEvent.change(inputNode1, { target: { value: "New task" } });
     const addTaskButton = screen.getByText("Add");
     fireEvent.click(addTaskButton);
-    const tasks = screen.getByTestId("main");
-    const first = tasks.querySelectorAll(".task");
-    expect(first.length).toBe(4);
+    const main = screen.getByTestId("main");
+    const tasks = main.querySelectorAll(".task");
+    expect(tasks.length).toBe(4);
+    expect(tasks[3].querySelector("span").textContent).toBe("New task");
   });
 });
