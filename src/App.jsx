@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./App.module.css";
 import Modal from "./Modal/Modal";
 import { addNewTask, changeTaskStatus, deleteTask } from "./utils";
