@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import styles from "./App.module.css";
 import Modal from "./Modal/Modal";
+import { addNewTask, changeTaskStatus, deleteTask } from "./utils";
 
 export default function App() {
   const defaultTasks = [
@@ -12,34 +13,20 @@ export default function App() {
   const dialog = useRef();
   const [name, setName] = useState("");
   const [completed, setCompleted] = useState(false);
-  const [id, setId] = useState(4);
+  const id = useRef(4);
 
-  function addNewTask() {
-    if (!name) {
-      return;
-    }
-    const newTask = {
-      id: id,
-      name: name,
-      completed: completed,
-    };
+  function handleAddNewTask() {
+    const newTask = addNewTask(id.current, name, completed);
     setTasks([...tasks, newTask]);
     setName("");
-    setId(id + 1);
+    id.current = id.current + 1;
     dialog.current.close();
   }
-  function changeTaskStatus(id) {
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        return { ...task, completed: !task.completed };
-      }
-      return task;
-    });
-    setTasks(newTasks);
+  function handleChangeStatus(id) {
+    setTasks(changeTaskStatus(tasks, id));
   }
-  function deleteTask(id) {
-    const newTasks = tasks.filter((task) => task.id !== id);
-    setTasks(newTasks);
+  function handleDeleteTask(id) {
+    setTasks(deleteTask(tasks, id));
   }
   return (
     <>
@@ -60,13 +47,13 @@ export default function App() {
                 type="checkbox"
                 defaultChecked={task.completed}
                 className={styles.completed_button}
-                onClick={() => changeTaskStatus(task.id)}
+                onClick={() => handleChangeStatus(task.id)}
               />
               <input
                 type="button"
                 value="delete"
                 className={styles.delete_button}
-                onClick={() => deleteTask(task.id)}
+                onClick={() => handleDeleteTask(task.id)}
               />
             </div>
           </div>
@@ -86,7 +73,7 @@ export default function App() {
         name={name}
         setCompleted={setCompleted}
         completed={completed}
-        addNewTask={addNewTask}
+        handleAddNewTask={handleAddNewTask}
       />
     </>
   );

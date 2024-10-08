@@ -7,7 +7,7 @@ Modal.propTypes = {
   name: PropTypes.string.isRequired,
   setCompleted: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
-  addNewTask: PropTypes.func.isRequired,
+  handleAddNewTask: PropTypes.func.isRequired,
 };
 export default function Modal({
   dialog,
@@ -15,10 +15,10 @@ export default function Modal({
   name,
   setCompleted,
   completed,
-  addNewTask,
+  handleAddNewTask,
 }) {
   return (
-    <dialog ref={dialog} className={styles.modal} data-testid="modal">
+    <dialog ref={dialog} className={styles.modal} id="dialog">
       <div className={styles.modal_inputs}>
         <label htmlFor="name">
           <h3>Enter the name for a new task</h3>
@@ -35,7 +35,7 @@ export default function Modal({
         <input
           type="checkbox"
           name="completed"
-          id=""
+          id="completed"
           className={styles.modal_checkbox}
           defaultChecked={completed}
           onChange={(e) => setCompleted(e.target.checked)}
@@ -44,7 +44,7 @@ export default function Modal({
           <button
             className={styles.modal_button}
             onClick={() => {
-              addNewTask();
+              handleAddNewTask();
             }}
           >
             Add
