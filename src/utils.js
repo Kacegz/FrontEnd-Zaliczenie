@@ -1,6 +1,6 @@
 function addNewTask(id, name, completed) {
   if (!name) {
-    return;
+    throw new Error("Name is required");
   }
   const newTask = {
     id: id,

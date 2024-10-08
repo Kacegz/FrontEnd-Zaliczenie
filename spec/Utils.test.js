@@ -6,7 +6,11 @@ describe("Utils", () => {
     expect(newtask.name).toBe("New Task");
     expect(newtask.completed).toBe(false);
   });
-
+  it("Throws an error when not providing a name", async () => {
+    expect(() => {
+      addNewTask(4, "", false);
+    }).toThrowError("Name is required");
+  });
   it("Logic for changing status works", async () => {
     let tasks = [
       { id: 1, name: "Buy groceries", completed: false },
