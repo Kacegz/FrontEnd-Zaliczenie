@@ -32,14 +32,14 @@ describe("Modal", () => {
     const dialog = document.querySelector("#dialog");
     expect(dialog).not.toBeInTheDocument();
   });
-  it("Opens modal", async () => {
+  it("Opens modal when Add task button is clicked", async () => {
     render(<App />);
     const openModalButton = screen.getByText("Add task");
     fireEvent.click(openModalButton);
     const dialog = document.querySelector("#dialog");
     expect(dialog).toBeInTheDocument();
   });
-  it("Closes modal", async () => {
+  it("Closes modal when cancel button is clicked", async () => {
     render(<App />);
     const openModalButton = screen.getByText("Add task");
     fireEvent.click(openModalButton);
@@ -49,7 +49,7 @@ describe("Modal", () => {
     fireEvent.click(cancelButton);
     expect(dialog).not.toBeInTheDocument();
   });
-  it("Adds task", async () => {
+  it("Opens modal and adds new task", async () => {
     render(<App />);
     const openModalButton = screen.getByText("Add task");
     fireEvent.click(openModalButton);

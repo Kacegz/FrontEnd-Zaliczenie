@@ -6,7 +6,7 @@ describe("Utils", () => {
     expect(newtask.name).toBe("New Task");
     expect(newtask.completed).toBe(false);
   });
-  it("Throws an error when not providing a name", async () => {
+  it("Adding task throws an error when not providing a name", async () => {
     expect(() => {
       addNewTask(4, "", false);
     }).toThrowError("Name is required");
