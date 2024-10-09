@@ -24,7 +24,7 @@ Aplikacja typu Todo list przygotowana pod testowanie.
 
 ## 🗺️ Tworzenie projektu
 
-1. Inicjalizacja projektu z pomocą Vite
+1. Inicjalizacja projektu za pomocą Vite
 2. Dodanie funkcjonalności aplikacji oraz stylów
 3. Dodanie bibliotek do testowania oraz konfiguracji
 4. Dodanie testów
@@ -36,7 +36,7 @@ Aplikacja typu Todo list przygotowana pod testowanie.
 2. **Chai**
    Chai jest to assertion library, który wymaga połączenia z frameworkiem aby moć uruchamiać testy (np. Mocha lub Karma)
 3. **Jasmine**
-   Jasmine jest to framework do testowania zawierający bibliotekę assert, co pozwala na szybsze wykorzystanie. Wykorzystałem ten framework ze względu na prostszą dokumentację, łatwiejszą integrację z React oraz lepsze przystosowanie do testowania DOM (z pomocą biblioteki jasmine-dom). Oferuje wiele funkcji out of the box co czyni go idealnym rozwiązaniem do mniejszych projektów. Jest także bardzo popularny w ekosystemie Angulara.
+   Jasmine jest to framework do testowania zawierający bibliotekę assert. Oferuje wiele funkcji out of the box co czyni go idealnym rozwiązaniem do mniejszych projektów oraz pozwala na szybsze wykorzystanie. Jest także bardzo popularny w ekosystemie Angulara. Wykorzystałem ten framework ze względu na prostszą dokumentację, łatwiejszą integrację z React oraz lepsze przystosowanie do testowania DOM (z pomocą biblioteki jasmine-dom).
 
 ## ✅ Dobre praktyki testowania
 
