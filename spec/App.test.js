@@ -1,6 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
-import App from "../src/App";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import routes from "../src/routes";
 describe("App", () => {
