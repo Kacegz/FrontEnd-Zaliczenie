@@ -8,7 +8,6 @@ const routes = [
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />,
     children: [
       {
         element: <Tasks />,
@@ -21,6 +20,10 @@ const routes = [
       {
         element: <Table />,
         path: "table",
+      },
+      {
+        element: <Error />,
+        path: "*",
       },
     ],
   },
