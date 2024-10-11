@@ -2,13 +2,9 @@ import { useRef, useState } from "react";
 import styles from "./Tasks.module.css";
 import Modal from "../Modal/Modal";
 import { addNewTask, changeTaskStatus, deleteTask } from "../utils";
+import { useOutletContext } from "react-router-dom";
 export default function Tasks() {
-  const defaultTasks = [
-    { id: 1, name: "Buy groceries", completed: false },
-    { id: 2, name: "Walk the dog", completed: false },
-    { id: 3, name: "Do laundry", completed: true },
-  ];
-  const [tasks, setTasks] = useState(defaultTasks);
+  const [tasks, setTasks] = useOutletContext();
   const [dialog, setDialog] = useState(false);
   const [name, setName] = useState("");
   const [completed, setCompleted] = useState(false);

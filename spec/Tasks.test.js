@@ -1,41 +1,45 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Tasks from "../src/Tasks/Tasks";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import routes from "../src/routes";
 
 describe("Tasks", () => {
+  beforeEach(() => {
+    const router = createMemoryRouter(routes, { initialIndex: 1 });
+    render(<RouterProvider router={router} />);
+  });
   it("Renders three tasks", async () => {
-    render(<Tasks />);
     const div = screen.getByTestId("main");
     const tasks = div.querySelectorAll(".task");
     expect(tasks.length).toBe(3);
   });
   it("Deletes first task", async () => {
-    render(<Tasks />);
     const deleteButtons = screen.getAllByText("delete");
     fireEvent.click(deleteButtons[0]);
     expect(screen.queryByText("Buy groceries")).not.toBeInTheDocument();
   });
   it("Completed checkbox works", async () => {
-    render(<Tasks />);
     const checkboxInputs = screen.getAllByRole("checkbox");
     fireEvent.click(checkboxInputs[0]);
     expect(checkboxInputs[0]).toBeChecked();
   });
 });
 describe("Modal", () => {
+  beforeEach(() => {
+    const router = createMemoryRouter(routes, { initialIndex: 1 });
+    render(<RouterProvider router={router} />);
+  });
   it("Not visible by default", async () => {
-    render(<Tasks />);
     const dialog = document.querySelector("#dialog");
     expect(dialog).not.toBeInTheDocument();
   });
   it("Opens modal when Add task button is clicked", async () => {
-    render(<Tasks />);
     const openModalButton = screen.getByText("Add task");
     fireEvent.click(openModalButton);
     const dialog = document.querySelector("#dialog");
     expect(dialog).toBeInTheDocument();
   });
   it("Closes modal when cancel button is clicked", async () => {
-    render(<Tasks />);
     const openModalButton = screen.getByText("Add task");
     fireEvent.click(openModalButton);
     const dialog = document.querySelector("#dialog");
@@ -45,7 +49,6 @@ describe("Modal", () => {
     expect(dialog).not.toBeInTheDocument();
   });
   it("Opens modal and adds new task", async () => {
-    render(<Tasks />);
     const openModalButton = screen.getByText("Add task");
     fireEvent.click(openModalButton);
     const dialog = document.querySelector("#dialog");

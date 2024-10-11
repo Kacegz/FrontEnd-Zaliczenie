@@ -1,7 +1,14 @@
+import { useState } from "react";
 import styles from "./App.module.css";
 import { Link, Outlet } from "react-router-dom";
 
 export default function App() {
+  const defaultTasks = [
+    { id: 1, name: "Buy groceries", completed: false },
+    { id: 2, name: "Walk the dog", completed: false },
+    { id: 3, name: "Do laundry", completed: true },
+  ];
+  const [tasks, setTasks] = useState(defaultTasks);
   return (
     <>
       <div className={styles.header}>
@@ -18,7 +25,7 @@ export default function App() {
           </Link>
         </div>
       </div>
-      <Outlet />
+      <Outlet context={[tasks, setTasks]} />
     </>
   );
 }
