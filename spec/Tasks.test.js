@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import Tasks from "../src/Tasks/Tasks";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import routes from "../src/routes";
 

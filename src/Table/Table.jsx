@@ -1,5 +1,8 @@
+import { useOutletContext } from "react-router-dom";
 import styles from "./Table.module.css";
 export default function Table() {
+  const [tasks, setTasks] = useOutletContext();
+  const data = tasks.slice(0, 2);
   return (
     <div className={styles.table} data-testid="table">
       <table>
@@ -10,14 +13,12 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Laundry</td>
-            <td>True</td>
-          </tr>
-          <tr>
-            <td>Grocery</td>
-            <td>false</td>
-          </tr>
+          {data.map((task, index) => (
+            <tr key={index}>
+              <td>{task.name}</td>
+              <td>{task.completed ? "True" : "False"}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
