@@ -14,6 +14,9 @@ Aplikacja typu Todo list przygotowana pod testowanie.
 
 ## 🧪 Testowanie:
 
+Testowanie aplikacji było testowane z node v20.15 LTS
+W nowszych wersjach node nie działa komenda npm test
+
 1. `git clone https://github.com/Kacegz/frontend-zaliczenie`
 
 2. `cd frontend-zaliczenie`
